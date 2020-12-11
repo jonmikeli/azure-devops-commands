@@ -16,3 +16,6 @@ az devops security group list -p $projectName --org $orgUrl --query "graphGroups
 
 #5-Query an org level
 az devops security group list --org $orgUrl --scope organization --query "graphGroups[?contains(principalName,'Specialists')].descriptor" -o tsv
+
+#6-Add membership to a Team project group
+az devops security group membership add --org $orgUrl --group-id $projAdminGroupDescriptor --member-id $specialistGroupDescriptor
