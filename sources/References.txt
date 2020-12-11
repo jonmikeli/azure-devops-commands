@@ -1,3 +1,5 @@
 https://www.colinsalmcorner.com/az-devops-like-a-boss/
 https://docs.microsoft.com/en-us/cli/azure/ext/azure-devops/devops?view=azure-cli-latest
 
+https://docs.microsoft.com/en-us/cli/azure/ext/azure-devops/devops/project?view=azure-cli-latest
+
