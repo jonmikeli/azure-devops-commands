@@ -102,3 +102,5 @@ az repos policy work-item-linking create --blocking true
                                         --repository-id feature1
                                         --org https://jmitest.visualstudio.com
                                         --project AZ400-TrainingDay1
+
+# TODO: add default queries and dashboards
