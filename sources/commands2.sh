@@ -2,8 +2,10 @@
 #If it doesn' work, pipe the variable into the login command
 
 #Variables
-orgUrl = "https://jmi.visualstudio.com"
-projectName = "TestTeamPoject"
+orgUrl="https://jmi.visualstudio.com"
+projectName="TestTeamPoject"
+patCode=$(<PATTokens.txt)
+export AZURE_DEVOPS_EXT_PAT=$patCode
 
 #1
 az extension add --name azure-devops
