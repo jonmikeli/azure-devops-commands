@@ -28,8 +28,8 @@ az devops login
 az devops project create --org $orgUrl --name $projectName -s git --visibility private
 
 #3b
-az devops team create --name "$projectName-Customers" --description "Customers project team" --org $orgUrl -p $projectName
-az devops team create --name "$projectName-Developers" --description "Developers project team" --org $orgUrl -p $projectName
+az devops team create --name $customersTeamName --description "Customers project team" --org $orgUrl -p $projectName
+az devops team create --name $developersTeamName --description "Developers project team" --org $orgUrl -p $projectName
 
 #3c
 az boards area project create --name ""
