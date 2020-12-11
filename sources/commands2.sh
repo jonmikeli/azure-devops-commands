@@ -40,6 +40,9 @@ az boards area project create --name "0-Requirements" --org $orgUrl --project $p
 az boards area project create --name "1-Management" --org $orgUrl --project $projectName
 
 az boards area project create --name "2-Architecture" --org $orgUrl --project $projectName
+az boards area project create --name "2.1-POC" --org $orgUrl --path "\\$projectName\\Area\\2-Architecture" --project $projectName
+az boards area project create --name "2.2-Design" --org $orgUrl --path "\\$projectName\\Area\\2-Architecture" --project $projectName
+az boards area project create --name "2.3-Documentation" --org $orgUrl --path "\\$projectName\\Area\\2-Architecture" --project $projectName
 
 az boards area project create --name "4-Development" --org $orgUrl --project $projectName
 az boards area project create --name "4.1-UI" --org $orgUrl --path "\\$projectName\\Area\\4-Development" --project $projectName
