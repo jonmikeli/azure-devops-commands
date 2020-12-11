@@ -11,7 +11,11 @@ export AZURE_DEVOPS_EXT_PAT=$patCode
 az extension add --name azure-devops
 
 #2
-#echo $patCode | az devops login
+#az login --tenant [tenantId] in case of needed
+#az account set -s [subscriptionId]
+#az account show
+
+#echo $patCode | az devops login --verbose --org $orgUrl
 az devops login
 
 #3
