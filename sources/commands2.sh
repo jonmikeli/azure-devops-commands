@@ -42,6 +42,11 @@ az boards area project create --name "1-Management" --org $orgUrl --project $pro
 az boards area project create --name "2-Architecture" --org $orgUrl --project $projectName
 
 az boards area project create --name "4-Development" --org $orgUrl --project $projectName
+az boards area project create --name "4.1-UI" --org $orgUrl --path "\\$projectName\\Area\\4-Development" --project $projectName
+az boards area project create --name "4.2-API" --org $orgUrl --path "\\$projectName\\Area\\4-Development" --project $projectName
+az boards area project create --name "4.3-Persistance" --org $orgUrl --path "\\$projectName\\Area\\4-Development" --project $projectName
+az boards area project create --name "4.4-Containerization" --org $orgUrl --path "\\$projectName\\Area\\4-Development" --project $projectName
+az boards area project create --name "4.5-ARM" --org $orgUrl --path "\\$projectName\\Area\\4-Development" --project $projectName
 
 az boards area project create --name "5-Tests" --org $orgUrl --project $projectName
 az boards area project create --name "Unit tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
