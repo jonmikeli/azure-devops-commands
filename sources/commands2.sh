@@ -68,6 +68,7 @@ az boards area project create --name "7.3-Meetings" --org $orgUrl --path "\\$pro
 az boards area project create --name "7.4-Assistance" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
 
 #3d
+#Note: the missing 'Area' part in the path is due to the API does not take it into account for boards and team memberships
 az boards area team add --path "\\$projectName\\0-Requirements" --team $customersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\0-Requirements" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
 
