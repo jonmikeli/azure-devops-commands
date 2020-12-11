@@ -11,7 +11,7 @@ export AZURE_DEVOPS_EXT_PAT=$patCode
 az extension add --name azure-devops
 
 #2
-#$pat | az devops login
+#echo $patCode | az devops login
 az devops login
 
 #3
