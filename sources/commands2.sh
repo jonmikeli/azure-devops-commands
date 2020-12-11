@@ -24,17 +24,10 @@ az extension add --name azure-devops
 #echo $patCode | az devops login --verbose --org $orgUrl
 az devops login
 
-#3
+#3-Team project
 az devops project create --org $orgUrl --name $projectName -s git --visibility private
 
-#3b
-az devops team create --name $customersTeamName --description "Customers team" --org $orgUrl -p $projectName
-az devops team create --name $developersTeamName --description "Developers team" --org $orgUrl -p $projectName
-az devops team create --name $devOpsAdminsTeamName --description "DevOps managers team" --org $orgUrl -p $projectName
-az devops team create --name $managersTeamName --description "Managers team" --org $orgUrl -p $projectName
-az devops team create --name $releaseManagersTeamName --description "Release managers team" --org $orgUrl -p $projectName
-
-#3c
+#3b-Areas
 az boards area project create --name "0-Requirements" --org $orgUrl --project $projectName
 
 az boards area project create --name "1-Management" --org $orgUrl --project $projectName
@@ -66,6 +59,14 @@ az boards area project create --name "7.1-Code review" --org $orgUrl --path "\\$
 az boards area project create --name "7.2-Pair programming" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
 az boards area project create --name "7.3-Meetings" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
 az boards area project create --name "7.4-Assistance" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
+
+#3b-Teams
+az devops team create --name $customersTeamName --description "Customers team" --org $orgUrl -p $projectName
+az devops team create --name $developersTeamName --description "Developers team" --org $orgUrl -p $projectName
+az devops team create --name $devOpsAdminsTeamName --description "DevOps managers team" --org $orgUrl -p $projectName
+az devops team create --name $managersTeamName --description "Managers team" --org $orgUrl -p $projectName
+az devops team create --name $releaseManagersTeamName --description "Release managers team" --org $orgUrl -p $projectName
+
 
 #3d
 az boards area team add --path "\\$projectName\\Area\\0-Requirements" --team $customersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
