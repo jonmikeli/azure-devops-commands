@@ -37,27 +37,22 @@ az devops team create --name $releaseManagersTeamName --description "Release man
 #3c
 az boards area project create --name "0-Requirements"
                               --org $orgUrl
-                              --path "0-Functional"
                               --project $projectName
 
 az boards area project create --name "1-Management"
                               --org $orgUrl
-                              --path "0-Functiona"
                               --project $projectName
 
 az boards area project create --name "2-Architecture"
                               --org $orgUrl
-                              --path "0-Functional"
                               --project $projectName
 
 az boards area project create --name "4-Development"
                               --org $orgUrl
-                              --path "0-Functional"
                               --project $projectName
 
 az boards area project create --name "5-Tests"
                               --org $orgUrl
-                              --path "0-Functional"
                               --project $projectName                                                                                                                        
 
 az boards area project create --name "Unit tests"
