@@ -72,6 +72,9 @@ az boards area project create --name "7.4-Assistance" --org $orgUrl --path "\\$p
 az boards area team add --path "\\$projectName\\0-Requirements" --team $customersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\0-Requirements" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
 
+#3e Delete the default team
+az devops team delete -id "$projectName Team" --org $orgUrl --project $projectName -y
+
 #Example
 #az boards area team add --team 'ContosoTeam' --path '\ContosoProject\MyProjectAreaName'
 
