@@ -51,14 +51,9 @@ az boards area project create --name "4-Development"
                               --org $orgUrl
                               --project $projectName
 
-az boards area project create --name "5-Tests"
-                              --org $orgUrl
-                              --project $projectName                                                                                                                        
+az boards area project create --name "5-Tests" --org $orgUrl --project $projectName
 
-az boards area project create --name "Unit tests"
-                              --org $orgUrl
-                              --path "/5-Tests"
-                              --project $projectName
+az boards area project create --name "Unit tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
 
 az boards area project create --name "Integration tests"
                               --org $orgUrl
