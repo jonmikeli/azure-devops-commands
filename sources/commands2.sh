@@ -60,6 +60,11 @@ az boards area project create --name "Unit tests"
                               --path "/5-Tests"
                               --project $projectName
 
+az boards area project create --name "Integration tests"
+                              --org $orgUrl
+                              --path "/5-Tests"
+                              --project $projectName
+
 #3d
 az boards area team add --path
                         --team
