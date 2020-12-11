@@ -13,3 +13,6 @@ az devops project create --org $orgUrl --name MyNewProject
 
 #4-Get the Project Administrators group Id
 az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Project Administrators')].descriptor" -o tsv
+
+#5-Query an org level
+az devops security group list --org $orgUrl --scope organization --query "graphGroups[?contains(principalName,'Specialists')].descriptor" -o tsv
