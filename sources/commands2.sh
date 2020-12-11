@@ -35,21 +35,13 @@ az devops team create --name $managersTeamName --description "Managers team" --o
 az devops team create --name $releaseManagersTeamName --description "Release managers team" --org $orgUrl -p $projectName
 
 #3c
-az boards area project create --name "0-Requirements"
-                              --org $orgUrl
-                              --project $projectName
+az boards area project create --name "0-Requirements" --org $orgUrl --project $projectName
 
-az boards area project create --name "1-Management"
-                              --org $orgUrl
-                              --project $projectName
+az boards area project create --name "1-Management" --org $orgUrl --project $projectName
 
-az boards area project create --name "2-Architecture"
-                              --org $orgUrl
-                              --project $projectName
+az boards area project create --name "2-Architecture" --org $orgUrl --project $projectName
 
-az boards area project create --name "4-Development"
-                              --org $orgUrl
-                              --project $projectName
+az boards area project create --name "4-Development" --org $orgUrl --project $projectName
 
 az boards area project create --name "5-Tests" --org $orgUrl --project $projectName
 az boards area project create --name "Unit tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
