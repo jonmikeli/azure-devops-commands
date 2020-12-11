@@ -11,7 +11,7 @@ customersTeamName="$projectName-customers"
 developersTeamName="$projectName-developers"
 devOpsAdminsTeamName="$projectName-devOpsAdmins"
 managersTeamName="$projectName-customers"
-releaseManagersTeamName="$projectName-realseManagers"
+releaseManagersTeamName="$projectName-releaseManagers"
 
 #1
 az extension add --name azure-devops
