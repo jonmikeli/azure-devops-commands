@@ -19,3 +19,6 @@ az devops security group list --org $orgUrl --scope organization --query "graphG
 
 #6-Add membership to a Team project group
 az devops security group membership add --org $orgUrl --group-id $projAdminGroupDescriptor --member-id $specialistGroupDescriptor
+
+#7-Check if a git repo exists
+az devops security group membership add --org $orgUrl --group-id $projAdminGroupDescriptor --member-id $specialistGroupDescriptor
