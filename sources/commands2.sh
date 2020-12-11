@@ -2,8 +2,8 @@
 #If it doesn' work, pipe the variable into the login command
 
 #Variables
-$orgUrl = ""
-$projectName = ""
+orgUrl = "https://jmi.visualstudio.com"
+projectName = "TestTeamPoject"
 
 #1
 az extension add --name azure-devops
