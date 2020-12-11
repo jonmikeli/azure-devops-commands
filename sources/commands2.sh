@@ -68,13 +68,7 @@ az boards area project create --name "7.3-Meetings" --org $orgUrl --path "\\$pro
 az boards area project create --name "7.4-Assistance" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
 
 #3d
-az boards area team add --path
-                        --team
-                        [--detect {false, true}]
-                        [--include-sub-areas {false, true}]
-                        [--org]
-                        [--project]
-                        [--set-as-default]
+az boards area team add --path "\\$projectName\\Area\\0-Requirements" --team $customersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
 
 #Example
 #az boards area team add --team 'ContosoTeam' --path '\ContosoProject\MyProjectAreaName'
