@@ -7,6 +7,12 @@ projectName="TestTeamPoject"
 patCode=$(<PATTokens.txt)
 export AZURE_DEVOPS_EXT_PAT=$patCode
 
+customersTeamName="$projectName-customers"
+developersTeamName="$projectName-developers"
+devOpsAdminsTeamName="$projectName-devOpsAdmins"
+managersTeamName="$projectName-customers"
+releaseManagersTeamName="$projectName-realseManagers"
+
 #1
 az extension add --name azure-devops
 
@@ -23,6 +29,7 @@ az devops project create --org $orgUrl --name $projectName -s git --visibility p
 
 #3b
 az devops team create --name "$projectName-Customers" --description "Customers project team" --org $orgUrl -p $projectName
+az devops team create --name "$projectName-Developers" --description "Developers project team" --org $orgUrl -p $projectName
 
 #3c
 az boards area project create --name ""
