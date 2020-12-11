@@ -18,6 +18,24 @@ az devops project create --org $orgUrl --name $projectName
 #3b
 az devops team create --name "" --description "" --ogg $orgUrl -p $projectName
 
+#3c
+az boards area project create --name ""
+                              --org $orgUrl
+                              --path ""
+                              --project $projectName
+
+#3d
+az boards area team add --path
+                        --team
+                        [--detect {false, true}]
+                        [--include-sub-areas {false, true}]
+                        [--org]
+                        [--project]
+                        [--set-as-default]
+
+#Example
+#az boards area team add --team 'ContosoTeam' --path '\ContosoProject\MyProjectAreaName'
+
 #4-Get the Project Administrators group Id
 $projAdminGroupDescriptor = az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Project Administrators')].descriptor" -o tsv
 
