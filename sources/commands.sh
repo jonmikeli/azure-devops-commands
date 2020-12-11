@@ -48,5 +48,20 @@ az devops security group membership add --org $orgUrl --group-id $projAdminGroup
 #7-Check if a git repo exists
 az devops security group membership add --org $orgUrl --group-id $projAdminGroupDescriptor --member-id $specialistGroupDescriptor
 
-#8-Create an external repo
+#8-Create a repo
 az repos create --name $RepoName -p $ProjectName --org $orgUrl
+
+#9-Add policies
+az repos policy comment-required create --blocking true
+                                        --branch master
+                                        --enabled true
+                                        --repository-id feature1
+                                        --org https://jmitest.visualstudio.com
+                                        --project AZ400-TrainingDay1
+
+az repos policy work-item-linking create --blocking true
+                                        --branch master
+                                        --enabled true
+                                        --repository-id feature1
+                                        --org https://jmitest.visualstudio.com
+                                        --project AZ400-TrainingDay1
