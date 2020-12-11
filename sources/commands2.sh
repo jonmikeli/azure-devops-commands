@@ -19,7 +19,7 @@ az extension add --name azure-devops
 az devops login
 
 #3
-az devops project create --org $orgUrl --name $projectName
+az devops project create --org $orgUrl --name $projectName -s git
 
 #3b
 az devops team create --name "" --description "" --ogg $orgUrl -p $projectName
