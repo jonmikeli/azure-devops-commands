@@ -22,3 +22,6 @@ az devops security group membership add --org $orgUrl --group-id $projAdminGroup
 
 #7-Check if a git repo exists
 az devops security group membership add --org $orgUrl --group-id $projAdminGroupDescriptor --member-id $specialistGroupDescriptor
+
+#8-Create an external repo
+az repos create --name $RepoName -p $ProjectName --org $orgUrl
