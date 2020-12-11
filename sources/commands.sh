@@ -5,3 +5,6 @@ az extension add --name azure-devops
 
 #$pat | az devops login
 az devops login
+
+az devops project create --org $orgUrl --name MyNewProject
+
