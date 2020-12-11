@@ -59,6 +59,14 @@ az boards area project create --name "5.4-Load  tests" --org $orgUrl --path "\\$
 az boards area project create --name "5.5-Running tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
 az boards area project create --name "5.6-Security tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
 
+az boards area project create --name "6-DevOps" --org $orgUrl --project $projectName
+
+az boards area project create --name "7-Others" --org $orgUrl --project $projectName
+az boards area project create --name "7.1-Code review" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
+az boards area project create --name "7.2-Pair programming" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
+az boards area project create --name "7.3-Meetings" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
+az boards area project create --name "7.4-Assistance" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project $projectName
+
 #3d
 az boards area team add --path
                         --team
