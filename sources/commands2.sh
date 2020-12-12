@@ -105,6 +105,7 @@ az devops team delete -id "$projectName Team" --org $orgUrl --project $projectNa
 projectAdminGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Project Administrators')].descriptor" -o tsv)
 projectContributorGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Contributors')].descriptor" -o tsv)
 projectReaderGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Readers')].descriptor" -o tsv)
+projectReleaseManagerGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Contributors')].descriptor" -o tsv)
 
 customersDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$customersTeamName')].descriptor" -o tsv)
 managersTeamDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$managersTeamName')].descriptor" -o tsv)
@@ -117,7 +118,11 @@ releaseManagersDescriptor=$(az devops security group list -p $projectName --org 
 #specialistGroupDescriptor=$(az devops security group list --org $orgUrl --scope organization --query "graphGroups[?contains(principalName,'Specialists')].descriptor" -o tsv)
 
 #6-Add membership to a Team project group
-az devops security group membership add --org $orgUrl --group-id $projectContributorGroupDescriptor --member-id $teamManagerDescriptor
+az devops security group membership add --org $orgUrl --group-id $projectReaderGroupDescriptor --member-id $customersDescriptor
+az devops security group membership add --org $orgUrl --group-id $projectContributorGroupDescriptor --member-id $managersTeamDescriptor
+az devops security group membership add --org $orgUrl --group-id $projectContributorGroupDescriptor --member-id $developersTeamDescriptor
+az devops security group membership add --org $orgUrl --group-id $projectAdminGroupDescriptor --member-id $teamManagerDescriptor
+az devops security group membership add --org $orgUrl --group-id $projectReleaseManagerGroupDescriptor --member-id $releaseManagersDescriptor
 
 #8-Create a repo
 az repos create --name $repoName -p $projectName --org $orgUrl
