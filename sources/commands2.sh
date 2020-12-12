@@ -3,7 +3,7 @@
 
 #Variables
 orgUrl="https://jmi.visualstudio.com"
-projectName="TestTeamPoject"
+projectName="TestTeamProject"
 patCode=$(<PATTokens.txt)
 export AZURE_DEVOPS_EXT_PAT=$patCode
 
