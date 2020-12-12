@@ -106,7 +106,11 @@ projectAdminGroupDescriptor=$(az devops security group list -p $projectName --or
 projectContributorGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Contributors')].descriptor" -o tsv)
 projectReaderGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Readers')].descriptor" -o tsv)
 
-teamManagerDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$managersTeamName')].descriptor" -o tsv)
+customersDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$customersTeamName')].descriptor" -o tsv)
+managersTeamDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$managersTeamName')].descriptor" -o tsv)
+developersTeamDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$developersTeamName')].descriptor" -o tsv)
+devOpsAdminsTeamDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$devOpsAdminsTeamName')].descriptor" -o tsv)
+releaseManagersDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$releaseManagersTeamName')].descriptor" -o tsv)
 
 
 #5-Query an org level
