@@ -148,8 +148,9 @@ projectRepositoryId=$(az repos show --repository "$projectName" --org $orgUrl --
 az repos delete --id $projectRepositoryId --org $orgUrl --project "$projectName" --yes
 
 
-#TODO: add default queries and dashboards
-az boards query --org $orgUrl --project $projectName --wiql ""
+#TODO: add default queries and dashboards (NOT POSSIBLE FOR NOW)
+data=$(sed "s/\$projectName/$projectName/g" tests.wiq)
+az boards query --org $orgUrl --project $projectName --wiql $data 
 
 az boards query [--detect {false, true}]
                 [--id]
@@ -158,4 +159,13 @@ az boards query [--detect {false, true}]
                 [--project]
                 [--wiql]
 
-#TODO: Create default Dashboards for each team
+#TODO: Create default Dashboards for each team (NOT POSSIBLE FOR NOW)
+
+#TODO Creare variable groups
+az pipelines variable-group create --name
+                                   --variables
+                                   [--authorize {false, true}]
+                                   [--description]
+                                   [--detect {false, true}]
+                                   [--org]
+                                   [--project]
