@@ -148,8 +148,6 @@ projectRepositoryId=$(az repos show --repository "$projectName" --org $orgUrl --
 az repos delete --id $projectRepositoryId --org $orgUrl --project "$projectName" --yes
 
 
-#TODO: Create default Dashboards for each team
-
 #TODO: add default queries and dashboards
 az boards query --org $orgUrl --project $projectName --wiql ""
 
@@ -159,3 +157,5 @@ az boards query [--detect {false, true}]
                 [--path]
                 [--project]
                 [--wiql]
+
+#TODO: Create default Dashboards for each team
