@@ -1,5 +1,4 @@
-#set the environment value AZURE_DEVOPS_EXT_PAT with the PAT value to fully automatize the process
-#If it doesn' work, pipe the variable into the login command
+#!/bin/bash
 
 #Variables
 orgUrl="https://jmi.visualstudio.com"
@@ -112,5 +111,3 @@ az repos policy work-item-linking create --blocking true --branch master --enabl
 
 #10-Wikis
 az devops wiki create --name "$projectName.Wiki" --org $orgUrl --project $projectName --type projectwiki
-
-# TODO: add default queries and dashboards
