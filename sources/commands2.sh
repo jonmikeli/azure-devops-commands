@@ -21,8 +21,8 @@ az extension add --name azure-devops
 #az account set -s [subscriptionId]
 #az account show
 
-#echo $patCode | az devops login --verbose --org $orgUrl
-az devops login
+echo $patCode | az devops login --verbose --org $orgUrl
+#az devops login
 
 #3-Team project
 az devops project create --org $orgUrl --name $projectName -s git --visibility private
