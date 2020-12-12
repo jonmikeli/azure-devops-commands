@@ -104,6 +104,10 @@ az devops security group membership add --org $orgUrl --group-id $projectRelease
 #8-Create a repo
 az repos create --name $repoName -p "$projectName" --org $orgUrl --verbose
 
+#8b-Delete the default repository
+projectRepositoryId=$(az repos show --repository "$projectName" --org $orgUrl --project "$projectName" --query id -o tsv)
+az repos delete --id $projectRepositoryId --org $orgUrl --project "$projectName" --yes
+
 #9-Add policies
 repositoryId=$(az repos show --repository $repoName --org $orgUrl --project "$projectName" --query id -o tsv)
 az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
