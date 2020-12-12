@@ -118,4 +118,6 @@ az devops wiki create [--detect {false, true}]
                       [--type {codewiki, projectwiki}]
                       [--version]
 
+az devops wiki create --name "{$projectName}Wiki" --org $orgUrl --project $projectName --type projectwiki
+
 # TODO: add default queries and dashboards
