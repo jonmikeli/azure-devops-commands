@@ -90,6 +90,7 @@ az boards area team add --path "\\$projectName\\7-Others" --team $developersTeam
 
 az boards area team add --path "\\$projectName\\6-DevOps" --team $devOpsAdminsTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
 az boards area team add --path "\\$projectName" --team $devOpsAdminsTeamName --include-sub-areas true --org $orgUrl --project $projectName
+az boards area team add --path "\\$projectName\\6-DevOps" --team $devOpsAdminsTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default #in order to solve settings issues
 
 az boards area team add --path "\\$projectName\\0-Requirements" --team $releaseManagersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
 
