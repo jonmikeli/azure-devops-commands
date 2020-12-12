@@ -71,13 +71,13 @@ az boards area project create --name "7.4-Assistance" --org $orgUrl --path "\\$p
 #Note: the missing 'Area' part in the path is due to the API does not take it into account for boards and team memberships
 az boards area team add --path "\\$projectName\\0-Requirements" --team $customersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
 
-az boards area team add --path "\\$projectName\\0-Requirements" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\1-Management" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
+az boards area team add --path "\\$projectName\\0-Requirements" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\5-Tests" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\7-Others" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 
-az boards area team add --path "\\$projectName\\0-Requirements" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\4-Development" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
+az boards area team add --path "\\$projectName\\0-Requirements" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\5-Tests" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\7-Others" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 
