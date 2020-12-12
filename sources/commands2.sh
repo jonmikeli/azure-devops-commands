@@ -137,7 +137,9 @@ az devops wiki create --name "$projectName.Wiki" --org $orgUrl --project $projec
 
 #TODO: delete default repository
 
-# TODO: add default queries and dashboards
+#TODO: Create default Dashboards for each team
+
+#TODO: add default queries and dashboards
 az boards query --org $orgUrl --project $projectName --wiql ""
 
 az boards query [--detect {false, true}]
