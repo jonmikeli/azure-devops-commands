@@ -75,6 +75,12 @@ az boards area team add --path "\\$projectName\\0-Requirements" --team $managers
 az boards area team add --path "\\$projectName\\5-Tests" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 az boards area team add --path "\\$projectName\\7-Others" --team $managersTeamName --include-sub-areas true --org $orgUrl --project $projectName
 
+az boards area team add --path "\\$projectName\\0-Requirements" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName
+az boards area team add --path "\\$projectName\\4-Development" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
+az boards area team add --path "\\$projectName\\5-Tests" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName
+az boards area team add --path "\\$projectName\\7-Others" --team $developersTeamName --include-sub-areas true --org $orgUrl --project $projectName
+
+
 #3e Delete the default team
 az devops team delete -id "$projectName Team" --org $orgUrl --project $projectName -y
 
