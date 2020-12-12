@@ -136,3 +136,11 @@ az repos policy work-item-linking create --blocking true --branch master --enabl
 az devops wiki create --name "$projectName.Wiki" --org $orgUrl --project $projectName --type projectwiki
 
 # TODO: add default queries and dashboards
+az boards query --org $orgUrl --project $projectName --wiql ""
+
+az boards query [--detect {false, true}]
+                [--id]
+                [--org]
+                [--path]
+                [--project]
+                [--wiql]
