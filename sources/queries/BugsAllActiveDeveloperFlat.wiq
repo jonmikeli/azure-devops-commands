@@ -21,4 +21,3 @@ WHERE
         OR [System.AreaPath] UNDER '$projectName\7-Others'
     )
 ORDER BY [System.Id] DESC
-</Wiql></WorkItemQuery>
