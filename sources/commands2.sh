@@ -102,16 +102,18 @@ az devops team delete -id "$projectName Team" --org $orgUrl --project $projectNa
 #az boards area team add --team 'ContosoTeam' --path '\ContosoProject\MyProjectAreaName'
 
 #4-Get the Project Administrators group Id
-$projAdminGroupDescriptor = az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Project Administrators')].descriptor" -o tsv
+projectAdminGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Project Administrators')].descriptor" -o tsv)
+projectContributorGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Contributors')].descriptor" -o tsv)
+projectReaderGroupDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'Readers')].descriptor" -o tsv)
+
+teamManagerDescriptor=$(az devops security group list -p $projectName --org $orgUrl --query "graphGroups[?contains(principalName,'$managersTeamName')].descriptor" -o tsv)
+
 
 #5-Query an org level
-$specialistGroupDescriptor = az devops security group list --org $orgUrl --scope organization --query "graphGroups[?contains(principalName,'Specialists')].descriptor" -o tsv
+#specialistGroupDescriptor=$(az devops security group list --org $orgUrl --scope organization --query "graphGroups[?contains(principalName,'Specialists')].descriptor" -o tsv)
 
 #6-Add membership to a Team project group
-az devops security group membership add --org $orgUrl --group-id $projAdminGroupDescriptor --member-id $specialistGroupDescriptor
-
-#7-Check if a git repo exists
-az devops security group membership add --org $orgUrl --group-id $projAdminGroupDescriptor --member-id $specialistGroupDescriptor
+az devops security group membership add --org $orgUrl --group-id $projectContributorGroupDescriptor --member-id $teamManagerDescriptor
 
 #8-Create a repo
 az repos create --name $repoName -p $projectName --org $orgUrl
