@@ -1,4 +1,5 @@
-<WorkItemQuery Version="1"><TeamFoundationServer>https://jmi.visualstudio.com/</TeamFoundationServer><TeamProject>TestTeamProject</TeamProject><Wiql>[System.Id],
+SELECT
+    [System.Id],
     [System.WorkItemType],
     [System.Title],
     [System.State],
