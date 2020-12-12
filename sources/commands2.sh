@@ -108,4 +108,14 @@ az repos policy work-item-linking create --blocking true
                                         --org https://jmitest.visualstudio.com
                                         --project AZ400-TrainingDay1
 
+#10-Wikis
+az devops wiki create [--detect {false, true}]
+                      [--mapped-path]
+                      [--name]
+                      [--org]
+                      [--project]
+                      [--repository]
+                      [--type {codewiki, projectwiki}]
+                      [--version]
+
 # TODO: add default queries and dashboards
