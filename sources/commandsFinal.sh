@@ -7,11 +7,11 @@ patCode=$(<PATTokens.txt)
 export AZURE_DEVOPS_EXT_PAT=$patCode
 repoName="JMI.$projectName"
 
-customersTeamName="$projectName-customers"
-developersTeamName="$projectName-developers"
-devOpsAdminsTeamName="$projectName-devOpsAdmins"
-managersTeamName="$projectName-managers"
-releaseManagersTeamName="$projectName-releaseManagers"
+customersTeamName="$projectName-Customers"
+developersTeamName="$projectName-Developers"
+devOpsAdminsTeamName="$projectName-DevOps Admins"
+managersTeamName="$projectName-Managers"
+releaseManagersTeamName="$projectName-Release Managers"
 
 
 echo $patCode | az devops login --verbose --org $orgUrl
