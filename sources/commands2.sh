@@ -122,15 +122,6 @@ az repos policy comment-required create --blocking true --branch master --enable
 az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project $projectName
 
 #10-Wikis
-az devops wiki create [--detect {false, true}]
-                      [--mapped-path]
-                      [--name]
-                      [--org]
-                      [--project]
-                      [--repository]
-                      [--type {codewiki, projectwiki}]
-                      [--version]
-
-az devops wiki create --name "{$projectName}Wiki" --org $orgUrl --project $projectName --type projectwiki
+az devops wiki create --name "$projectName.Wiki" --org $orgUrl --project $projectName --type projectwiki
 
 # TODO: add default queries and dashboards
