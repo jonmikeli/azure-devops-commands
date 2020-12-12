@@ -6,6 +6,7 @@ orgUrl="https://jmi.visualstudio.com"
 projectName="TestTeamProject"
 patCode=$(<PATTokens.txt)
 export AZURE_DEVOPS_EXT_PAT=$patCode
+repoName="JMI.$projectName"
 
 customersTeamName="$projectName-customers"
 developersTeamName="$projectName-developers"
@@ -113,7 +114,7 @@ az devops security group membership add --org $orgUrl --group-id $projAdminGroup
 az devops security group membership add --org $orgUrl --group-id $projAdminGroupDescriptor --member-id $specialistGroupDescriptor
 
 #8-Create a repo
-az repos create --name $RepoName -p $ProjectName --org $orgUrl
+az repos create --name $repoName -p $projectName --org $orgUrl
 
 #9-Add policies
 az repos policy comment-required create --blocking true
