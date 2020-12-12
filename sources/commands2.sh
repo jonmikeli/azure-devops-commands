@@ -117,9 +117,9 @@ az devops security group membership add --org $orgUrl --group-id $projAdminGroup
 az repos create --name $repoName -p $projectName --org $orgUrl
 
 #9-Add policies
-repositoryId=$(az repos show --repository $repoName --org $orgUrl --project $projectName --query id -o json)
+repositoryId=$(az repos show --repository $repoName --org $orgUrl --project $projectName --query id -o tsv)
 az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project $projectName
-az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project $projetName
+az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project $projectName
 
 #10-Wikis
 az devops wiki create [--detect {false, true}]
