@@ -10,7 +10,7 @@ export AZURE_DEVOPS_EXT_PAT=$patCode
 customersTeamName="$projectName-customers"
 developersTeamName="$projectName-developers"
 devOpsAdminsTeamName="$projectName-devOpsAdmins"
-managersTeamName="$projectName-customers"
+managersTeamName="$projectName-managers"
 releaseManagersTeamName="$projectName-releaseManagers"
 
 #1
