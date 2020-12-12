@@ -93,7 +93,6 @@ az boards area team add --path "\\$projectName" --team $devOpsAdminsTeamName --i
 
 az boards area team add --path "\\$projectName\\0-Requirements" --team $releaseManagersTeamName --include-sub-areas true --org $orgUrl --project $projectName --set-as-default
 
-
 #3e Delete the default team
 az devops team delete -id "$projectName Team" --org $orgUrl --project $projectName -y
 
