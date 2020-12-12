@@ -136,6 +136,17 @@ az repos policy work-item-linking create --blocking true --branch master --enabl
 az devops wiki create --name "$projectName.Wiki" --org $orgUrl --project $projectName --type projectwiki
 
 #TODO: delete default repository
+az repos show --repository
+              [--detect {false, true}]
+              [--open]
+              [--org]
+              [--project]
+              [--query-examples]
+              [--subscription]
+projectRepositoryId=$(az repos show --repository "$projectName" --org $orgUrl --project "$projectName" --query id -o tsv)
+
+az repos delete --id $projectRepositoryId --org $orgUrl --project "$projectName" --yes
+
 
 #TODO: Create default Dashboards for each team
 
