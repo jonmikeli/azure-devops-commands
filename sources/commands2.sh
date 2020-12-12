@@ -55,7 +55,7 @@ az boards area project create --name "5-Tests" --org $orgUrl --project $projectN
 az boards area project create --name "5.1-Unit tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
 az boards area project create --name "5.2-Integration tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
 az boards area project create --name "5.3-Deployment tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
-az boards area project create --name "5.4-Load  tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
+az boards area project create --name "5.4-Load tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
 az boards area project create --name "5.5-Running tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
 az boards area project create --name "5.6-Security tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project $projectName
 
