@@ -19,7 +19,7 @@ _get_parameter_values ()
 		case $option in
 			o) orgUrl=$OPTARG;;
 			c) customerName=$OPTARG;;
-			p) projectName=$OPTARG;;
+			p) projectToBeCreatedName=$OPTARG;;
 			f) patFilePath=$OPTARG;;
 		esac
 	done
@@ -35,7 +35,7 @@ _get_parameter_values ()
         exit 1
 	fi
 
-    if [ -z "$projectName"]; then
+    if [ -z "$projectToBeCreatedName"]; then
         echo "No project name has been found."
         exit 1
 	fi
@@ -50,7 +50,7 @@ _get_parameter_values ()
 
 	echo "Organization URL: $orgUrl"
 	echo "Customer name: $customerName"
-	echo "Project name: $projectName"
+	echo "Project name: $projectToBeCreatedName"
 	echo "PAT code file path: $patFilePath"
 }
 
@@ -63,6 +63,7 @@ echo "Starting the Team Projec deployment..."
 #Variables
 orgUrl="https://jmi.visualstudio.com"
 projectName="TestTeamProject"
+projectName=${customerName^^}-$projectToBeCreatedName
 patCode=$(<PATTokens.txt)
 export AZURE_DEVOPS_EXT_PAT=$patCode
 repoName="JMI.$projectName"
