@@ -13,7 +13,7 @@ SELECT
 FROM workitems
 WHERE
     [System.TeamProject] = '$projectName'
-    AND [System.WorkItemType] = 'Bug'
+    AND [System.WorkItemType] = 'User Story'
     AND [System.State] IN ('Closed')
     AND (
         [System.AreaPath] UNDER '$projectName\0-Requirements'
