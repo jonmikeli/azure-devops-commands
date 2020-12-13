@@ -14,7 +14,7 @@ FROM workitems
 WHERE
     [System.TeamProject] = '$projectName'
     AND [System.WorkItemType] = 'Bug'
-    AND [System.State] IN ('New', 'Active', 'In Progress', 'Accepted')
+    AND [System.State] IN ('Resolved')
     AND (
         [System.AreaPath] UNDER '$projectName\0-Requirements'
         OR [System.AreaPath] UNDER '$projectName\4-Development'
