@@ -64,7 +64,7 @@ echo "Starting the Team Projec deployment..."
 orgUrl="https://jmi.visualstudio.com"
 projectName="TestTeamProject"
 projectName=${customerName^^}-$projectToBeCreatedName
-patCode=$(<PATTokens.txt)
+patCode=$(<$patFilePath)
 export AZURE_DEVOPS_EXT_PAT=$patCode
 repoName="JMI.$projectName"
 
