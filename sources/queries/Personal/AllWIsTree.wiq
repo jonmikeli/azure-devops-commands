@@ -15,7 +15,6 @@ WHERE
     (
         [Source].[System.TeamProject] = 'TestTeamProject'
         AND [Source].[System.WorkItemType] <> ''
-        AND [Source].[System.State] IN ('New', 'Active', 'In Progress', 'Accepted')
     )
     AND (
         [System.Links.LinkType] = 'System.LinkTypes.Hierarchy-Forward'
