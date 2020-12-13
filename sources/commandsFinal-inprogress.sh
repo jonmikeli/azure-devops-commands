@@ -48,15 +48,10 @@ _get_parameter_values ()
 
 	echo "===>>>END OF GETTING PARAMETER VALUES"
 
-	echo "Subscription id: $subscriptionId"
-	echo "Deployment name: $deploymentName"
-	echo "Resource group name: $resourceGroupName"
-	echo "Template file path: $templateFilePath"
-	echo "Parameters file path: $parametersFilePath"
-	echo "Resource group location: $resourceGroupLocation"
-	echo "Resource group name: $resourceGroupName"
-	echo "Solution environment: $environment"
-	echo "Tags: ${tags[@]}"
+	echo "Organization URL: $orgUrl"
+	echo "Customer name: $customerName"
+	echo "Project name: $projectName"
+	echo "PAT code file path: $patFilePath"
 }
 
 #get script parameter values
