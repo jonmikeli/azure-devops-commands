@@ -61,12 +61,11 @@ _get_parameter_values "$@"
 echo "Starting the Team Projec deployment..."
 
 #Variables
-orgUrl="https://jmi.visualstudio.com"
-projectName="TestTeamProject"
 projectName=${customerName^^}-$projectToBeCreatedName
 patCode=$(<$patFilePath)
 export AZURE_DEVOPS_EXT_PAT=$patCode
-repoName="JMI.$projectName"
+#TODO: replace spaces in the customer name
+repoName="$customerName.$projectName"
 
 customersTeamName="$projectName-Customers"
 developersTeamName="$projectName-Developers"
@@ -74,7 +73,7 @@ devOpsAdminsTeamName="$projectName-DevOps Admins"
 managersTeamName="$projectName-Managers"
 releaseManagersTeamName="$projectName-Release Managers"
 
-
+#2-Connect to the organization
 echo $patCode | az devops login --verbose --org $orgUrl
 
 #3-Team project
