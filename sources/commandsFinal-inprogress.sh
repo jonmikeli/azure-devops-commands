@@ -39,6 +39,11 @@ _get_parameter_values ()
         echo "No project name has been found."
         exit 1
 	fi
+
+    if [ -z "$patFilePath"]; then
+        echo "No PAT file path has been found."
+        exit 1
+	fi
 	
 
 	echo "===>>>END OF GETTING PARAMETER VALUES"
