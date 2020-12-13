@@ -34,6 +34,11 @@ _get_parameter_values ()
         echo "No customer name has been found."
         exit 1
 	fi
+
+    if [ -z "$projectName"]; then
+        echo "No project name has been found."
+        exit 1
+	fi
 	
 
 	echo "===>>>END OF GETTING PARAMETER VALUES"
