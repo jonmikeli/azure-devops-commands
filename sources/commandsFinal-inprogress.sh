@@ -19,6 +19,7 @@ _get_parameter_values ()
 		case $option in
 			o) orgUrl=$OPTARG;;
 			c) customerName=$OPTARG;;
+            m) customerCode=$OPTARG;;
 			p) projectToBeCreatedName=$OPTARG;;
 			f) patFilePath=$OPTARG;;
 		esac
@@ -32,6 +33,11 @@ _get_parameter_values ()
 
     if [ -z "$customerName"]; then
         echo "No customer name has been found."
+        exit 1
+	fi
+
+    if [ -z "$customerCode"]; then
+        echo "No customer code has been found."
         exit 1
 	fi
 
@@ -50,6 +56,7 @@ _get_parameter_values ()
 
 	echo "Organization URL: $orgUrl"
 	echo "Customer name: $customerName"
+    echo "Customer code: $customerCode"
 	echo "Project name: $projectToBeCreatedName"
 	echo "PAT code file path: $patFilePath"
 }
@@ -65,7 +72,8 @@ projectName=${customerName^^}-$projectToBeCreatedName
 patCode=$(<$patFilePath)
 export AZURE_DEVOPS_EXT_PAT=$patCode
 #TODO: replace spaces in the customer name
-repoName="$customerName.$projectName"
+trimmedCustomerCode=$(sed 's/ //g' <<< $customerCode)
+repoName="$trimmedCustomerCode.$projectName"
 
 customersTeamName="$projectName-Customers"
 developersTeamName="$projectName-Developers"
