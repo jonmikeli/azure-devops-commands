@@ -29,10 +29,12 @@ _get_parameter_values ()
         echo "No organization URL has been found."
         exit 1
 	fi
-	
-	if [ -z "$deploymentName"]; then
-		deploymentName="${resourceGroupName}-deployment"
+
+    if [ -z "$customerName"]; then
+        echo "No customer name has been found."
+        exit 1
 	fi
+	
 
 	echo "===>>>END OF GETTING PARAMETER VALUES"
 
