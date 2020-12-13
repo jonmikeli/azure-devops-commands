@@ -10,19 +10,7 @@ SELECT
     [System.AssignedTo],
     [System.IterationPath],
     [System.Tags]
-FROM workitemLinks
+FROM workitems
 WHERE
-    (
-        [Source].[System.TeamProject] = 'TestTeamProject'
-        AND [Source].[System.WorkItemType] <> ''
-        AND [Source].[System.State] IN ('New', 'Active', 'In Progress', 'Accepted')
-    )
-    AND (
-        [System.Links.LinkType] = 'System.LinkTypes.Hierarchy-Forward'
-    )
-    AND (
-        [Target].[System.TeamProject] = 'TestTeamProject'
-        AND [Target].[System.WorkItemType] <> ''
-    )
-ORDER BY [System.Id] DESC
-MODE (Recursive)
+    [System.TeamProject] = '$projectName'
+
