@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#TODO: get parameters
+# -organization URL
+# -customer name
+# -project name
+# -PAT code file path
+
+
 #Variables
 orgUrl="https://jmi.visualstudio.com"
 projectName="TestTeamProject"
