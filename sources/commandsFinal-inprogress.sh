@@ -6,6 +6,52 @@
 # -project name
 # -PAT code file path
 
+#function to get script parameter values
+_get_parameter_values ()
+{
+	echo "===>>>GET PARAMETER VALUES"
+
+	while getopts "o:c:p:f:" option;
+	do
+
+		echo ">>>SCRIPT PARAMETERS:$option"
+		
+		case $option in
+			o) orgUrl=$OPTARG;;
+			c) customerName=$OPTARG;;
+			p) projectName=$OPTARG;;
+			f) patFilePath=$OPTARG;;
+		esac
+	done
+	shift $((OPTIND -1))
+	
+	if [ -z "$orgUrl"]; then
+        echo "No organization URL has been found."
+        exit 1
+	fi
+	
+	if [ -z "$deploymentName"]; then
+		deploymentName="${resourceGroupName}-deployment"
+	fi
+
+	echo "===>>>END OF GETTING PARAMETER VALUES"
+
+	echo "Subscription id: $subscriptionId"
+	echo "Deployment name: $deploymentName"
+	echo "Resource group name: $resourceGroupName"
+	echo "Template file path: $templateFilePath"
+	echo "Parameters file path: $parametersFilePath"
+	echo "Resource group location: $resourceGroupLocation"
+	echo "Resource group name: $resourceGroupName"
+	echo "Solution environment: $environment"
+	echo "Tags: ${tags[@]}"
+}
+
+#get script parameter values
+_get_parameter_values "$@"
+
+#
+echo "Starting the Team Projec deployment..."
 
 #Variables
 orgUrl="https://jmi.visualstudio.com"
