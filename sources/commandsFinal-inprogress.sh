@@ -87,6 +87,9 @@ set -e
 	#2-Connect to the organization
 	echo $patCode | az devops login --verbose --org $orgUrl
 
+	#Display executed commands
+	set -x
+	
 	#3-Team project
 	az devops project create --org $orgUrl --name "$projectName" -s git --visibility private --verbose
 
