@@ -1,6 +1,7 @@
 #!/bin/bash
-./commandsFinal.sh \
+./commandsFinal-inprogress.sh \
 -o "https://jmi.visualstudio.com" \
 -c "JMI" \
--p "Industrialization test" \
+-m "jmi" \
+-p "Industrialization test2" \
 -f "PATTokens.txt"
