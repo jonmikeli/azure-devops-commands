@@ -71,7 +71,8 @@ echo "Starting the Team Projec deployment..."
 projectName=${customerName^^}-$projectToBeCreatedName
 patCode=$(<$patFilePath)
 export AZURE_DEVOPS_EXT_PAT=$patCode
-#TODO: replace spaces in the customer name
+
+#Replace spaces in the customer name
 trimmedCustomerCode=$(sed 's/ //g' <<< $customerCode)
 repoName="$trimmedCustomerCode.$projectName"
 
