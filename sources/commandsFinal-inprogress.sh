@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#TODO: get parameters
+#Get parameters
 # -organization URL
 # -customer name
 # -project name
