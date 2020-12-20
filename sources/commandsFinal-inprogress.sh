@@ -11,7 +11,7 @@ _get_parameter_values ()
 {
 	echo "===>>>GET PARAMETER VALUES"
 
-	while getopts "o:c:p:f:" option;
+	while getopts "o:c:m:p:f:" option;
 	do
 
 		echo ">>>SCRIPT PARAMETERS:$option"
@@ -172,7 +172,7 @@ set -e
 	az devops security group membership add --org $orgUrl --group-id $projectReaderGroupDescriptor --member-id $customersDescriptor --verbose
 	az devops security group membership add --org $orgUrl --group-id $projectContributorGroupDescriptor --member-id $managersTeamDescriptor --verbose
 	az devops security group membership add --org $orgUrl --group-id $projectContributorGroupDescriptor --member-id $developersTeamDescriptor --verbose
-	az devops security group membership add --org $orgUrl --group-id $projectAdminGroupDescriptor --member-id $teamManagerDescriptor --verbose
+	az devops security group membership add --org $orgUrl --group-id $projectAdminGroupDescriptor --member-id $devOpsAdminsTeamDescriptor --verbose
 	az devops security group membership add --org $orgUrl --group-id $projectReleaseManagerGroupDescriptor --member-id $releaseManagersDescriptor --verbose
 
 	#8-Create a repo
