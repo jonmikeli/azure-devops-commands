@@ -76,7 +76,8 @@ set -e
 
 	#Replace spaces in the customer name
 	trimmedCustomerCode=$(sed 's/ //g' <<< $customerCode)
-	repoName="$trimmedCustomerCode.$projectName"
+	trimmedProjectName=$(sed 's/ /-/g' <<< $projectName)
+	repoName="$trimmedCustomerCode.$trimmedProjectName"
 
 	customersTeamName="$projectName-Customers"
 	developersTeamName="$projectName-Developers"
