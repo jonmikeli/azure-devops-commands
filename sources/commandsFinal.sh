@@ -77,8 +77,11 @@ set -e
 	#Replace spaces in the customer name
 	trimmedCustomerCode=$(sed 's/ //g' <<< $customerCode)
 	trimmedProjectName=$(sed 's/ /-/g' <<< $projectName)
-	trimmedAndDottedProjectName=$(sed 's/ /./g' <<< $projectName)
 	repoName="$trimmedCustomerCode.$trimmedProjectName"
+	
+	#Buiding dotted and first letter upper case project name
+	tmpProjectName=$(sed -e 's/\b\(.\)/\u\1/g' <<< $projectName)
+	trimmedAndDottedProjectName=$(sed 's/ /./g' <<< $tmpProjectName)	
 	dottedRepoName="$trimmedCustomerCode.$trimmedAndDottedProjectName"
 
 	echo "================================================"
