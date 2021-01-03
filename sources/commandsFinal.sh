@@ -257,10 +257,19 @@ set -e
 	az pipelines variable-group create --name $iacCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $iacRepoName." --org $orgUrl --project "$projectName"	
 
 	#13-Pipeline folders
-	az pipelines folder create --path "UI" --org $orgUrl --project "$projectName"
-	az pipelines folder create --path "UI\Web" --org $orgUrl --project "$projectName"
-	az pipelines folder create --path "API" --org $orgUrl --project "$projectName"
-	az pipelines folder create --path "IaC" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "1-UI" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "1-UI\Web" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "1-UI\Desktop" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "1-UI\Mobile" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "2-API" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "3-Persistance" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "4-IoT" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "4-IoT\Edge" --org $orgUrl --project "$projectName"
+	az pipelines folder create --path "5-IaC" --org $orgUrl --project "$projectName"
+
+	#14-Extensions
+	az devops extension install --extension-id "" --publisher-id "" --org $orgUrl
+
 )
 
 if [ $?  == 0 ];
