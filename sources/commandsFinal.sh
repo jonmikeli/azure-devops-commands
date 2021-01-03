@@ -273,7 +273,7 @@ set -e
 	#14-Extensions
 	#List extensions
 	extensionList=$(az devops extension list --org $orgUrl)
-	if [ $extensionList] ;
+	if [ "$extensionList" ];
 	then
         echo "Organization extension list loaded."
 
