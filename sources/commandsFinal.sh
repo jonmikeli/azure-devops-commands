@@ -280,10 +280,13 @@ set -e
 		#Assembly-Info-Task
 		extensionId="Assembly-Info-Task"
 		publisherId="bleddynrichards"
-		counter=$(echo $extensions | jq '.[] | select(.extensionId == "$extensionId") | length')
-		if [ -v $counter ] && [ $counter -gt 0 ];		
+		counter=$(echo $jsonData | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
+		if [ $counter ];		
 		then 
-			echo "The extension $extensionId is installed already."
+			if [ $counter -gt 0 ];
+			then
+				echo "The extension $extensionId is installed already."
+			fi
 		else
 			echo "The extension $extensionId has not been found in the organization. Installing the extension..."
 			az devops extension install --extension-id $extensionId --publisher-id $publisherId --org $orgUrl	
