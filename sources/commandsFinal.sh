@@ -238,6 +238,12 @@ set -e
 	webCommonVariableGroupName="$webRepoName.Common"
 	iacCommonVariableGroupName="$iacRepoName.Common"
 
+	echo "================================================"
+	echo "  API variables group name: $apiCommonVariableGroupName"
+	echo "  Web variables group name: $webCommonVariableGroupName"
+	echo "  IaC variables group name: $iacCommonVariableGroupName"
+	echo "================================================"
+
 	az pipelines variable-group create --name $apiCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $apiRepoName." --org $orgUrl --project $projectName
 
 	#11-Wikis
