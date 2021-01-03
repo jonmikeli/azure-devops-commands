@@ -20,3 +20,6 @@ The script can be useful in contexts where the Team Projects need to be created 
 The other fields cannot be scripted for now.
 
 ## How to use the scripts?
+The repository contains two scripts:
+ - createTeamProject.sh
+ - commands.sh
