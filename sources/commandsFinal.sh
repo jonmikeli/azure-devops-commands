@@ -275,14 +275,13 @@ set -e
 	extensionList=$(az devops extension list --org $orgUrl)
 	if [ "$extensionList" ];
 	then
-        echo "Organization extension list loaded."
-		echo $extensionList
+        echo "Organization extension list loaded."		
 
 		#Assembly-Info-Task
 		extensionId="Assembly-Info-Task"
 		publisherId="bleddynrichards"
 		#counter=$(echo $jsonData | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
-		filteredData=$(echo $jsonData | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId)')
+		filteredData=$(echo $extensionList | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId)')
 
 		echo "Filtered data:"
 		echo $filteredData
