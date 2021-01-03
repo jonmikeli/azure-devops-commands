@@ -5,19 +5,21 @@ The commands take in charge basic operations when it comes to creating Team Proj
 The script can be useful in contexts where the Team Projects need to be created in an industrialized manner and according to specific rules/configurations.
 
 ## Covered steps
- - Team project creation
+ - Team Project creation
  - Teams creation
  - Areas creation
- - Permissions between Areas and Teams
- - Permissions of the Teams (group memberships)
+ - Areas and Teams permissions
+ - Teams memberships
  - Repository creations
- - Repository policies configuration
+ - Configuration of policies (repository)
  - Wiki creation
  - Structure of folders at pipeline level
- - Group of variables per repository with default values
- - Extensions installations
+ - Group of variables (per repository) with default values
+ - Extensions installation
 
 The other fields cannot be scripted for now.
+
+The names of projects, repositories, areas, folders, teams, etc are normed and follow certain types of practices.
 
 ## How to use the scripts?
 ### Scripts
