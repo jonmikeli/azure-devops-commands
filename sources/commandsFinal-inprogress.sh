@@ -189,7 +189,7 @@ set -e
 	az repos create --name $iacRepoName -p "$projectName" --org $orgUrl --verbose
 
 	#9-Add policies
-	#9.1-Default repo
+	#9.1-Project default repo
 	repositoryId=$(az repos show --repository $repoName --org $orgUrl --project "$projectName" --query id -o tsv)
 	az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
@@ -209,7 +209,7 @@ set -e
 	az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 
-	#10-Delete the default repository
+	#10-Delete the default repository (created with the team project)
 	projectRepositoryId=$(az repos show --repository "$projectName" --org $orgUrl --project "$projectName" --query id -o tsv)
 	az repos delete --id $projectRepositoryId --org $orgUrl --project "$projectName" --yes
 
