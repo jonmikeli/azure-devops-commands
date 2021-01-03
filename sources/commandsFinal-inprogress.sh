@@ -180,13 +180,22 @@ set -e
 	az devops security group membership add --org $orgUrl --group-id $projectReleaseManagerGroupDescriptor --member-id $releaseManagersDescriptor --verbose
 
 	#8-Create a repo
+	apiRepoName="$repoName.API"
+	webRepoName="$repoName.UI.Web"
+	iacRepoName="$repoName.IaC"
 	az repos create --name $repoName -p "$projectName" --org $orgUrl --verbose
-	az repos create --name "$repoName.API" -p "$projectName" --org $orgUrl --verbose
-	az repos create --name "$repoName.UI.Web" -p "$projectName" --org $orgUrl --verbose
-	az repos create --name "$repoName.IaC" -p "$projectName" --org $orgUrl --verbose
+	az repos create --name $apiRepoName -p "$projectName" --org $orgUrl --verbose
+	az repos create --name $webRepoName -p "$projectName" --org $orgUrl --verbose
+	az repos create --name $iacRepoName -p "$projectName" --org $orgUrl --verbose
 
 	#9-Add policies
+	#9.1-Default repo
 	repositoryId=$(az repos show --repository $repoName --org $orgUrl --project "$projectName" --query id -o tsv)
+	az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
+	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
+
+	#9.2-API
+	repositoryId=$(az repos show --repository $apiRepoName --org $orgUrl --project "$projectName" --query id -o tsv)
 	az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 
