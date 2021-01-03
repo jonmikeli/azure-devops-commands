@@ -20,6 +20,16 @@ The script can be useful in contexts where the Team Projects need to be created 
 The other fields cannot be scripted for now.
 
 ## How to use the scripts?
+### Scripts
 The repository contains two scripts:
- - createTeamProject.sh
- - commands.sh
+ - createTeamProject.sh, script launcher
+ - commands.sh, contains the logic
+
+### How to...
+You only need to execute `createTeamProject.sh`.
+
+```bash
+createTeamProject.sh
+```
+
+This file contains the settings to call the commands inside `commands.sh`.
