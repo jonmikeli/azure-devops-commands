@@ -127,12 +127,14 @@ set -e
 	az boards area project create --name "5.6-Security tests" --org $orgUrl --path "\\$projectName\\Area\\5-Tests" --project "$projectName" --verbose
 
 	az boards area project create --name "6-DevOps" --org $orgUrl --project "$projectName" --verbose
-
+	
 	az boards area project create --name "7-Others" --org $orgUrl --project "$projectName" --verbose
 	az boards area project create --name "7.1-Code review" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project "$projectName" --verbose
 	az boards area project create --name "7.2-Pair programming" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project "$projectName" --verbose
 	az boards area project create --name "7.3-Meetings" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project "$projectName" --verbose
 	az boards area project create --name "7.4-Assistance" --org $orgUrl --path "\\$projectName\\Area\\7-Others" --project "$projectName" --verbose
+
+	az boards area project create --name "8-Technical debt" --org $orgUrl --project "$projectName" --verbose
 
 	#3d
 	#Note: the missing 'Area' part in the path is due to the API does not take it into account for boards and team memberships
