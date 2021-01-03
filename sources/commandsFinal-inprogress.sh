@@ -65,7 +65,7 @@ _get_parameter_values ()
 _get_parameter_values "$@"
 
 #
-echo "Starting the Team Projec deployment..."
+echo "Starting the Team Project deployment..."
 
 set -e
 (
