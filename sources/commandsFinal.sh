@@ -342,6 +342,19 @@ set -e
 			az devops extension install --extension-id $extensionId --publisher-id $publisherId --org $orgUrl	
 		fi
 
+		#ms-devlabs.estimate
+		extensionId="estimate"
+		publisherId="ms-devlabs"
+		counter=$(echo $extensionList | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
+
+		if [ $counter ];		
+		then 
+			echo "The extension $extensionId is already installed."		
+		else
+			echo "The extension $extensionId has not been found in the organization. Installing the extension..."
+			az devops extension install --extension-id $extensionId --publisher-id $publisherId --org $orgUrl	
+		fi
+
 	else
 		echo "No organization extension has been loaded."
 
@@ -350,6 +363,7 @@ set -e
 		az devops extension install --extension-id "vss-plans" --publisher-id "ms" --org $orgUrl
 		az devops extension install --extension-id "workitem-feature-timeline-extension" --publisher-id "ms-devlabs" --org $orgUrl
 		az devops extension install --extension-id "team-retrospectives" --publisher-id "ms-devlabs" --org $orgUrl
+		az devops extension install --extension-id "estimate" --publisher-id "ms-devlabs" --org $orgUrl
 	fi
 )
 
