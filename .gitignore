@@ -353,3 +353,4 @@ MigrationBackup/
 PAT*
 PATTokens.*
 *[Tt]okens.*
+*[Tt]est*.*
