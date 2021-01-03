@@ -277,9 +277,22 @@ set -e
 	then
         echo "Organization extension list loaded."		
 
-		#Assembly-Info-Task
+		#bleddynrichards.Assembly-Info-Task
 		extensionId="Assembly-Info-Task"
 		publisherId="bleddynrichards"
+		counter=$(echo $extensionList | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
+
+		if [ $counter ];		
+		then 
+			echo "The extension $extensionId is already installed."		
+		else
+			echo "The extension $extensionId has not been found in the organization. Installing the extension..."
+			az devops extension install --extension-id $extensionId --publisher-id $publisherId --org $orgUrl	
+		fi
+
+		#agile-extensions.dod
+		extensionId="dod"
+		publisherId="agile-extensions"
 		counter=$(echo $extensionList | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
 
 		if [ $counter ];		
