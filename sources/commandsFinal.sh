@@ -271,8 +271,33 @@ set -e
 	az pipelines folder create --path "5-IaC" --org $orgUrl --project "$projectName"
 
 	#14-Extensions
-	az devops extension install --extension-id "Assembly-Info-Task" --publisher-id "bleddynrichards" --org $orgUrl
+	#List extensions
+	extensionList=$(az devops extension list --org $orgUrl)
+	if [ -v "$extensionList"];
+	then
+        echo "Organization extension list loaded."
 
+		#Assembly-Info-Task
+		extensionId="Assembly-Info-Task"
+		publisherId="bleddynrichards"
+		counter=$(echo $extensions | jq '.[] | select(.extensionId == "$extensionId") | length')
+		if [ -v $counter ] && [ $counter -gt 0 ];		
+		then 
+			echo "The extension $extensionId is installed already."
+		else
+			echo "The extension $extensionId has not been found in the organization. Installing the extension..."
+			az devops extension install --extension-id $extensionId --publisher-id $publisherId --org $orgUrl	
+		fi
+
+	else
+		echo "No orrganization extension has been loaded."
+
+		az devops extension install --extension-id "Assembly-Info-Task" --publisher-id "bleddynrichards" --org $orgUrl
+		az devops extension install --extension-id "dod" --publisher-id "agile-extensions" --org $orgUrl
+		az devops extension install --extension-id "vss-plans" --publisher-id "ms" --org $orgUrl
+		az devops extension install --extension-id "workitem-feature-timeline-extension" --publisher-id "ms-devlabs" --org $orgUrl
+		az devops extension install --extension-id "team-retrospectives" --publisher-id "ms-devlabs" --org $orgUrl
+	fi
 )
 
 if [ $?  == 0 ];
