@@ -290,7 +290,7 @@ set -e
 		fi
 
 	else
-		echo "No orrganization extension has been loaded."
+		echo "No organization extension has been loaded."
 
 		az devops extension install --extension-id "Assembly-Info-Task" --publisher-id "bleddynrichards" --org $orgUrl
 		az devops extension install --extension-id "dod" --publisher-id "agile-extensions" --org $orgUrl
