@@ -79,11 +79,24 @@ set -e
 	trimmedProjectName=$(sed 's/ /-/g' <<< $projectName)
 	repoName="$trimmedCustomerCode.$trimmedProjectName"
 
+	echo "================================================"
+	echo "  Trimmed customer code: $trimmedCustomerCode"
+	echo "  Trimmed project name: $trimmedProjectName"
+	echo "================================================"
+
 	customersTeamName="$projectName-Customers"
 	developersTeamName="$projectName-Developers"
 	devOpsAdminsTeamName="$projectName-DevOps Admins"
 	managersTeamName="$projectName-Managers"
 	releaseManagersTeamName="$projectName-Release Managers"
+
+	echo "================================================"
+	echo "  Customers team name: $customersTeamName"
+	echo "  Developers team name: $developersTeamName"
+	echo "  DevOps team name: $devOpsAdminsTeamName"
+	echo "  Managers team name: $managersTeamName"
+	echo "  Release Managers team name: $releaseManagersTeamName"
+	echo "================================================"
 
 	#2-Connect to the organization
 	echo $patCode | az devops login --verbose --org $orgUrl
@@ -212,16 +225,16 @@ set -e
 	#10-Delete the default repository (created with the team project)
 	projectRepositoryId=$(az repos show --repository "$projectName" --org $orgUrl --project "$projectName" --query id -o tsv)
 	az repos delete --id $projectRepositoryId --org $orgUrl --project "$projectName" --yes
-
-	#11-Wikis
-	az devops wiki create --name "$projectName.Wiki" --org $orgUrl --project "$projectName" --type projectwiki --verbose
-
+	
 	#12-Variable groups
 	apiCommonVariableGroupName="$apiRepoName.Common"
 	webCommonVariableGroupName="$webRepoName.Common"
 	iacCommonVariableGroupName="$iacRepoName.Common"
 
 	az pipelines variable-group create --name $apiCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $apiRepoName." --org $orgUrl --project $projectName
+
+	#11-Wikis
+	az devops wiki create --name "$trimmedProjectName.Wiki" --org $orgUrl --project "$projectName" --type projectwiki --verbose
 )
 
 if [ $?  == 0 ];
