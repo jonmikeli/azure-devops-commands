@@ -77,11 +77,16 @@ set -e
 	#Replace spaces in the customer name
 	trimmedCustomerCode=$(sed 's/ //g' <<< $customerCode)
 	trimmedProjectName=$(sed 's/ /-/g' <<< $projectName)
+	trimmedAndDottedProjectName=$(sed 's/ /./g' <<< $projectName)
 	repoName="$trimmedCustomerCode.$trimmedProjectName"
+	dottedRepoName="$trimmedCustomerCode.$trimmedAndDottedProjectName"
 
 	echo "================================================"
 	echo "  Trimmed customer code: $trimmedCustomerCode"
 	echo "  Trimmed project name: $trimmedProjectName"
+	echo "  Trimmed and dotted project name: $trimmedAndDottedProjectName"
+	echo "  Repo name: $repoName"
+	echo "  Dotted repo name: $dottedRepoName"
 	echo "================================================"
 
 	customersTeamName="$projectName-Customers"
@@ -232,7 +237,10 @@ set -e
 	#10-Delete the default repository (created with the team project)
 	projectRepositoryId=$(az repos show --repository "$projectName" --org $orgUrl --project "$projectName" --query id -o tsv)
 	az repos delete --id $projectRepositoryId --org $orgUrl --project "$projectName" --yes
-	
+
+	#11-Wikis
+	az devops wiki create --name "$trimmedProjectName.Wiki" --org $orgUrl --project "$projectName" --type projectwiki --verbose
+
 	#12-Variable groups
 	apiCommonVariableGroupName="$apiRepoName.Common"
 	webCommonVariableGroupName="$webRepoName.Common"
@@ -244,10 +252,7 @@ set -e
 	echo "  IaC variables group name: $iacCommonVariableGroupName"
 	echo "================================================"
 
-	az pipelines variable-group create --name $apiCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $apiRepoName." --org $orgUrl --project $projectName
-
-	#11-Wikis
-	az devops wiki create --name "$trimmedProjectName.Wiki" --org $orgUrl --project "$projectName" --type projectwiki --verbose
+	az pipelines variable-group create --name $apiCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $apiRepoName." --org $orgUrl --project "$projectName"
 )
 
 if [ $?  == 0 ];
