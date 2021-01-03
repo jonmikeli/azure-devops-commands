@@ -1,7 +1,7 @@
 #!/bin/bash
 ./commandsFinal.sh \
 -o "https://jmi.visualstudio.com" \
--c "JMI" \
--m "jmi" \
--p "Industrialization test8" \
+-c "1JMI" \
+-m "1jmi" \
+-p "Industrialization test4" \
 -f "PATTokens.txt"

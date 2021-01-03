@@ -303,6 +303,19 @@ set -e
 			az devops extension install --extension-id $extensionId --publisher-id $publisherId --org $orgUrl	
 		fi
 
+		#ms.vss-plans
+		extensionId="vss-plans"
+		publisherId="ms"
+		counter=$(echo $extensionList | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
+
+		if [ $counter ];		
+		then 
+			echo "The extension $extensionId is already installed."		
+		else
+			echo "The extension $extensionId has not been found in the organization. Installing the extension..."
+			az devops extension install --extension-id $extensionId --publisher-id $publisherId --org $orgUrl	
+		fi
+
 	else
 		echo "No organization extension has been loaded."
 
