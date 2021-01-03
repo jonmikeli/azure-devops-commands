@@ -1,7 +1,7 @@
 #!/bin/bash
 ./commandsFinal.sh \
--o "https://jmi.visualstudio.com" \
--c "1JMI" \
--m "1jmi" \
--p "Industrialization test4" \
--f "PATTokens.txt"
+-o "https://your_organization" \
+-c "[customer name]" \
+-m "[customer code]" \
+-p "[team project name]" \
+-f "[path to the file containing the PAT code]"
