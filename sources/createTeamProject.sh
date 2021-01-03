@@ -1,5 +1,5 @@
 #!/bin/bash
-./commandsFinal-inprogress.sh \
+./commandsFinal.sh \
 -o "https://jmi.visualstudio.com" \
 -c "JMI" \
 -m "jmi" \
