@@ -3,5 +3,5 @@
 -o "https://jmi.visualstudio.com" \
 -c "JMI" \
 -m "jmi" \
--p "Industrialization test3" \
+-p "Industrialization test6" \
 -f "PATTokens.txt"
