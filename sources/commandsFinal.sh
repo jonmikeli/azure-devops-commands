@@ -253,6 +253,8 @@ set -e
 	echo "================================================"
 
 	az pipelines variable-group create --name $apiCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $apiRepoName." --org $orgUrl --project "$projectName"
+	az pipelines variable-group create --name $webCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $webRepoName." --org $orgUrl --project "$projectName"
+	az pipelines variable-group create --name $iacCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $iacRepoName." --org $orgUrl --project "$projectName"	
 )
 
 if [ $?  == 0 ];
