@@ -149,6 +149,7 @@ set -e
 	az boards area team add --path "\\$projectName\\0-Requirements" --team "$developersTeamName" --include-sub-areas true --org $orgUrl --project "$projectName" --verbose
 	az boards area team add --path "\\$projectName\\5-Tests" --team "$developersTeamName" --include-sub-areas true --org $orgUrl --project "$projectName" --verbose
 	az boards area team add --path "\\$projectName\\7-Others" --team "$developersTeamName" --include-sub-areas true --org $orgUrl --project "$projectName" --verbose
+	az boards area team add --path "\\$projectName\\8-Technical debt" --team "$developersTeamName" --include-sub-areas true --org $orgUrl --project "$projectName" --verbose
 
 	az boards area team add --path "\\$projectName\\6-DevOps" --team "$devOpsAdminsTeamName" --include-sub-areas true --org $orgUrl --project "$projectName" --set-as-default --verbose
 	az boards area team add --path "\\$projectName" --team "$devOpsAdminsTeamName" --include-sub-areas true --org $orgUrl --project "$projectName" --verbose
@@ -180,6 +181,9 @@ set -e
 
 	#8-Create a repo
 	az repos create --name $repoName -p "$projectName" --org $orgUrl --verbose
+	az repos create --name "$repoName.API" -p "$projectName" --org $orgUrl --verbose
+	az repos create --name "$repoName.UI.Web" -p "$projectName" --org $orgUrl --verbose
+	az repos create --name "$repoName.IaC" -p "$projectName" --org $orgUrl --verbose
 
 	#9-Add policies
 	repositoryId=$(az repos show --repository $repoName --org $orgUrl --project "$projectName" --query id -o tsv)
