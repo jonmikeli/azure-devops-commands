@@ -196,6 +196,13 @@ set -e
 	apiRepoName="$repoName.API"
 	webRepoName="$repoName.UI.Web"
 	iacRepoName="$repoName.IaC"
+
+	echo "================================================"
+	echo "  API repo name: $apiRepoName"
+	echo "  Web repo name: $webRepoName"
+	echo "  IaC repo name: $iacRepoName"
+	echo "================================================"
+
 	az repos create --name $repoName -p "$projectName" --org $orgUrl --verbose
 	az repos create --name $apiRepoName -p "$projectName" --org $orgUrl --verbose
 	az repos create --name $webRepoName -p "$projectName" --org $orgUrl --verbose
