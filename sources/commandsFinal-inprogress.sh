@@ -194,8 +194,13 @@ set -e
 	az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 
-	#9.2-API
+	#9.2-API repo
 	repositoryId=$(az repos show --repository $apiRepoName --org $orgUrl --project "$projectName" --query id -o tsv)
+	az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
+	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
+
+	#9.3-Web repo
+	repositoryId=$(az repos show --repository $webRepoName --org $orgUrl --project "$projectName" --query id -o tsv)
 	az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 
