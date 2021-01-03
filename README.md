@@ -2,8 +2,9 @@
 This repository contains a set of `az cli` commands related to Azure DevOps operations.
 
 The commands take in charge basic operations when it comes to creating Team Projects.
+The script can be useful in contexts where the Team Projects need to be created in an industrialized manner and according to specific rules/configurations.
 
-Covered steps:
+## Covered steps
  - Team project creation
  - Teams creation
  - Areas creation
@@ -16,4 +17,6 @@ Covered steps:
  - Group of variables per repository with default values
  - Extensions installations
 
-They can be useful in contexts where the Team Projects need to be created in an industrialized manner and according to specific rules/configurations.
+The other fields cannot be scripted for now.
+
+## How to use the scripts?
