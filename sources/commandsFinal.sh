@@ -276,11 +276,16 @@ set -e
 	if [ "$extensionList" ];
 	then
         echo "Organization extension list loaded."
+		echo $extensionList
 
 		#Assembly-Info-Task
 		extensionId="Assembly-Info-Task"
 		publisherId="bleddynrichards"
 		counter=$(echo $jsonData | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
+
+		echo "Counter:"
+		echo $counter
+
 		if [ $counter ];		
 		then 
 			if [ $counter -gt 0 ];
