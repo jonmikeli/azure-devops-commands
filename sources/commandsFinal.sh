@@ -285,7 +285,7 @@ set -e
 		then 
 			if [ $counter -gt 0 ];
 			then
-				echo "The extension $extensionId is installed already."
+				echo "The extension $extensionId is already installed."
 			fi
 		else
 			echo "The extension $extensionId has not been found in the organization. Installing the extension..."
