@@ -280,13 +280,9 @@ set -e
 		#Assembly-Info-Task
 		extensionId="Assembly-Info-Task"
 		publisherId="bleddynrichards"
-		#counter=$(echo $jsonData | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
-		filteredData=$(echo $extensionList | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId)')
+		counter=$(echo $extensionList | jq --arg extensionId $extensionId '.[] | select(.extensionId == $extensionId) | length')
 
-		echo "Filtered data:"
-		echo $filteredData
-
-		if [ $filteredData ];		
+		if [ $counter ];		
 		then 
 			echo "The extension $extensionId is already installed."		
 		else
