@@ -1,5 +1,5 @@
 #!/bin/bash
-./commandsFinal.sh \
+./commands.sh \
 -o "https://your_organization" \
 -c "[customer name]" \
 -m "[customer code]" \
