@@ -271,7 +271,7 @@ set -e
 	az pipelines folder create --path "5-IaC" --org $orgUrl --project "$projectName"
 
 	#14-Extensions
-	az devops extension install --extension-id "" --publisher-id "" --org $orgUrl
+	az devops extension install --extension-id "Assembly-Info-Task" --publisher-id "bleddynrichards" --org $orgUrl
 
 )
 
