@@ -3,6 +3,7 @@
 #Get parameters
 # -organization URL
 # -customer name
+# -customer code
 # -project name
 # -PAT code file path
 
