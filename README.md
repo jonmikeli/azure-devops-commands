@@ -24,8 +24,8 @@ The names of projects, repositories, areas, folders, teams, etc are normed and f
 ## How to use the scripts?
 ### Scripts
 The repository contains two scripts:
- - createTeamProject.sh, script launcher
- - commands.sh, contains the logic
+ - `createTeamProject.sh`, script launcher
+ - `commands.sh`, contains the logic
 
 ### How to...
 You only need to execute `createTeamProject.sh`.
