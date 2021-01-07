@@ -28,13 +28,14 @@ The repository contains two scripts:
  - `commands.sh`, contains the logic
 
 ### How to...
-You only need to execute `createTeamProject.sh`.
+You only need to execute `createTeamProject.sh` or call directly the `command.sh` script with the required parameters.
 
 ```bash
 createTeamProject.sh
 ```
 
-This file contains the settings to call the commands inside `commands.sh`.
+`createTeamProject.sh` contains the settings to call `commands.sh` (kind of a "helper").
+
 
 ```bash
 ./commands.sh \
