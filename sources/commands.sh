@@ -72,8 +72,7 @@ set -e
 (
 	#Variables
 	projectName=${customerName^^}-$projectToBeCreatedName
-	patCode=$(<$patFilePath)
-	export AZURE_DEVOPS_EXT_PAT=$patCode
+		
 
 	#Replace spaces in the customer name
 	trimmedCustomerCode=$(sed 's/ //g' <<< $customerCode)
@@ -110,15 +109,20 @@ set -e
 	echo "================================================"
 
 	#2-Connect to the organization
-	echo $patCode | az devops login --verbose --org $orgUrl
+	patCode=$(<$patFilePath)
+	export AZURE_DEVOPS_EXT_PAT=$patCode
+	echo $patCode | az devops login --verbose --org $orgUrl	
+	#az devops login --verbose --org $orgUrl
 
 	#Display executed commands
 	#set -x
 	
 	#3-Team project
+	echo ">>> Create the team project"
 	az devops project create --org $orgUrl --name "$projectName" -s git --visibility private --verbose
 
 	#3b-Teams
+	echo ">>> Create the teams"
 	az devops team create --name "$customersTeamName" --description "Customers team" --org $orgUrl -p "$projectName" --verbose
 	az devops team create --name "$developersTeamName" --description "Developers team" --org $orgUrl -p "$projectName" --verbose
 	az devops team create --name "$devOpsAdminsTeamName" --description "DevOps managers team" --org $orgUrl -p "$projectName" --verbose
@@ -126,6 +130,7 @@ set -e
 	az devops team create --name "$releaseManagersTeamName" --description "Release managers team" --org $orgUrl -p "$projectName" --verbose
 
 	#3c-Areas
+	echo ">>> Create the areas"
 	az boards area project create --name "0-Requirements" --org $orgUrl --project "$projectName" --verbose
 
 	az boards area project create --name "1-Management" --org $orgUrl --project "$projectName" --verbose
@@ -162,6 +167,7 @@ set -e
 
 	#3d
 	#Note: the missing 'Area' part in the path is due to the API does not take it into account for boards and team memberships
+	echo ">>> Create the boards"
 	az boards area team add --path "\\$projectName\\0-Requirements" --team "$customersTeamName" --include-sub-areas true --org $orgUrl --project "$projectName" --set-as-default --verbose
 
 	az boards area team add --path "\\$projectName\\1-Management" --team "$managersTeamName" --include-sub-areas true --org $orgUrl --project "$projectName" --set-as-default --verbose
@@ -185,6 +191,7 @@ set -e
 	#az devops team delete -id "$projectName Team" --org $orgUrl --project $projectName -y
 
 	#4-Get the Project Administrators group Id
+	echo ">>> Get the group decriptors"
 	projectAdminGroupDescriptor=$(az devops security group list -p "$projectName" --org $orgUrl --query "graphGroups[?contains(principalName,'Project Administrators')].descriptor" -o tsv)
 	projectContributorGroupDescriptor=$(az devops security group list -p "$projectName" --org $orgUrl --query "graphGroups[?contains(principalName,'Contributors')].descriptor" -o tsv)
 	projectReaderGroupDescriptor=$(az devops security group list -p "$projectName" --org $orgUrl --query "graphGroups[?contains(principalName,'Readers')].descriptor" -o tsv)
@@ -197,6 +204,7 @@ set -e
 	releaseManagersDescriptor=$(az devops security group list -p "$projectName" --org $orgUrl --query "graphGroups[?contains(principalName,'$releaseManagersTeamName')].descriptor" -o tsv)
 
 	#6-Add membership to a Team project group
+	echo ">>> Set membership to Team Project groups"
 	az devops security group membership add --org $orgUrl --group-id $projectReaderGroupDescriptor --member-id $customersDescriptor --verbose
 	az devops security group membership add --org $orgUrl --group-id $projectContributorGroupDescriptor --member-id $managersTeamDescriptor --verbose
 	az devops security group membership add --org $orgUrl --group-id $projectContributorGroupDescriptor --member-id $developersTeamDescriptor --verbose
@@ -204,6 +212,7 @@ set -e
 	az devops security group membership add --org $orgUrl --group-id $projectReleaseManagerGroupDescriptor --member-id $releaseManagersDescriptor --verbose
 
 	#8-Create a repo
+	echo ">>> Create the repositories"
 	apiRepoName="$repoName.API"
 	webRepoName="$repoName.UI.Web"
 	iacRepoName="$repoName.IaC"
@@ -221,6 +230,7 @@ set -e
 
 	#9-Add policies
 	#9.1-Project default repo
+	echo ">>> Set the repositories' policies"
 	repositoryId=$(az repos show --repository $repoName --org $orgUrl --project "$projectName" --query id -o tsv)
 	az repos policy comment-required create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
@@ -241,13 +251,16 @@ set -e
 	az repos policy work-item-linking create --blocking true --branch master --enabled true --repository-id $repositoryId --org $orgUrl --project "$projectName" --verbose
 
 	#10-Delete the default repository (created with the team project)
+	echo ">>> Delete the default repository"
 	projectRepositoryId=$(az repos show --repository "$projectName" --org $orgUrl --project "$projectName" --query id -o tsv)
 	az repos delete --id $projectRepositoryId --org $orgUrl --project "$projectName" --yes
 
 	#11-Wikis
+	echo ">>> Create the wiki"
 	az devops wiki create --name "$trimmedProjectName.Wiki" --org $orgUrl --project "$projectName" --type projectwiki --verbose
 
 	#12-Variable groups
+	echo ">>> Create the variable groups"
 	apiCommonVariableGroupName="$apiRepoName.Common"
 	webCommonVariableGroupName="$webRepoName.Common"
 	iacCommonVariableGroupName="$iacRepoName.Common"
@@ -263,6 +276,7 @@ set -e
 	az pipelines variable-group create --name $iacCommonVariableGroupName --variables "Version.Major"="0" "Version.Minor"="1" "Build.Configuration"="Release" --authorize true --description "Common variables for the pipelines (build, release, etc) related to $iacRepoName." --org $orgUrl --project "$projectName"	
 
 	#13-Pipeline folders
+	echo ">>> Create the pipeline folders"
 	az pipelines folder create --path "1-UI" --org $orgUrl --project "$projectName"
 	az pipelines folder create --path "1-UI\Web" --org $orgUrl --project "$projectName"
 	az pipelines folder create --path "1-UI\Desktop" --org $orgUrl --project "$projectName"
@@ -274,6 +288,7 @@ set -e
 	az pipelines folder create --path "5-IaC" --org $orgUrl --project "$projectName"
 
 	#14-Extensions
+	echo ">>> Install the extensions"
 	#List extensions
 	extensionList=$(az devops extension list --org $orgUrl)
 	if [ "$extensionList" ];
